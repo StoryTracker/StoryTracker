@@ -28,3 +28,48 @@
 - 모든 테이블은 Chunk와 연결되어 스토리 컨텍스트를 유지
 - Character와 Place는 Charater_Location을 통해 연결
 - Character 간의 관계는 Relationship 테이블로 관리
+
+## 🐳 Docker로 PostgreSQL 실행하기
+
+### 사전 요구사항
+- Docker Desktop 설치
+- Docker Compose 설치
+
+### 빠른 시작
+
+#### macOS/Linux
+```bash
+# 데이터베이스 시작
+./docker-manager.sh start
+
+# 상태 확인
+./docker-manager.sh status
+
+# 데이터베이스 연결
+./docker-manager.sh connect
+
+# 데이터베이스 중지
+./docker-manager.sh stop
+```
+
+#### Windows
+```cmd
+# 데이터베이스 시작
+docker-manager.bat start
+
+# 상태 확인
+docker-manager.bat status
+
+# 데이터베이스 연결
+docker-manager.bat connect
+
+# 데이터베이스 중지
+docker-manager.bat stop
+```
+
+### 연결 정보
+- **Host**: localhost
+- **Port**: 5432
+- **Database**: storytracker
+- **Username**: storyuser
+- **Password**: storypass123

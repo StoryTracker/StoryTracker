@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: storytracker_db
+    environment:
+      POSTGRES_DB: storytracker
+      POSTGRES_USER: storyuser
+      POSTGRES_PASSWORD: storypass123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./DB/init:/docker-entrypoint-initdb.d
+      - ./DB/backups:/backups
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U storyuser -d storytracker"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres_data:
+    driver: local
