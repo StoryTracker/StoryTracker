@@ -1,0 +1,49 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Chunk {
+  id string [primary key]
+  detail string
+}
+
+Table Character {
+  id string [primary key]
+  Chunk_id string
+  name string
+  age integer
+  gender string
+  summary string
+}
+
+Table Place {
+  id string [primary key]
+  Chunk_id string
+  name string
+  summary string
+}
+
+Table Relationship {
+  id string [primary key]
+  Chunk_id string
+  first_character_id string
+  seceond_character_id string
+  relation_name string
+  summary string
+}
+
+Table Charater_Location {
+  id string [primary key]
+  Chunk_id string
+  Character_id string
+  Place_id string
+  summary string
+}
+
+Ref: Chunk.id < Character.Chunk_id
+Ref: Chunk.id < Place.Chunk_id
+Ref: Chunk.id < Relationship.Chunk_id
+Ref: Chunk.id < Charater_Location.Chunk_id
+Ref: Character.id < Relationship.first_character_id
+Ref: Character.id < Relationship.seceond_character_id
+Ref: Character.id < Charater_Location.Character_id
+Ref: Place.id < Charater_Location.Place_id
