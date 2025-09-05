@@ -26,12 +26,12 @@ Table Relationship {
   id string [primary key]
   Chunk_id string
   first_character_id string
-  seceond_character_id string
+  second_character_id string
   relation_name string
   summary string
 }
 
-Table Charater_Location {
+Table Character_Location {
   id string [primary key]
   Chunk_id string
   Character_id string
@@ -42,8 +42,8 @@ Table Charater_Location {
 Ref: Chunk.id < Character.Chunk_id
 Ref: Chunk.id < Place.Chunk_id
 Ref: Chunk.id < Relationship.Chunk_id
-Ref: Chunk.id < Charater_Location.Chunk_id
+Ref: Chunk.id < Character_Location.Chunk_id
 Ref: Character.id < Relationship.first_character_id
-Ref: Character.id < Relationship.seceond_character_id
-Ref: Character.id < Charater_Location.Character_id
-Ref: Place.id < Charater_Location.Place_id
+Ref: Character.id < Relationship.second_character_id
+Ref: Character.id < Character_Location.Character_id
+Ref: Place.id < Character_Location.Place_id
